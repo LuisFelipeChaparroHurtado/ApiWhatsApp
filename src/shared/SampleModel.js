@@ -91,15 +91,15 @@ class SampleModel {
     SampleList(number) {
         const data = JSON.stringify({
             messaging_product: "whatsapp",
-            to: `whatsapp:${number}`,
+            to: number,
             type: "interactive",
             interactive: {
                 type: "list",
                 body: {
-                    text: "tengo estas opciones",
+                    text: "Tengo estas opciones",
                 },
                 footer: {
-                    text: "selecciona una de las opciones para poder atenderte",
+                    text: "Selecciona una de las opciones para poder atenderte",
                 },
                 action: {
                     buttons: "Ver opciones",
