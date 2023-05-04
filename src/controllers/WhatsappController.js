@@ -98,6 +98,7 @@ class WhatsappController extends WhatsappDAO_1.default {
                     }
                     else {
                         var data = SampleModel_1.default.SampleText("Escriba bien mula", number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
                     }
                 }
                 res.send("EVENT_RECEIVED");
