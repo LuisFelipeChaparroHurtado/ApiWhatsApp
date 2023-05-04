@@ -17,7 +17,7 @@ function SendMessageWhatsApp(textResponse, number) {
         body: data,
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer RYTAFAADHJJADADH25634232GGSDSA12345"
+            Authorization: "Bearer EAAIZArlrblIwBANdbcZCp3ZCfUmxNYuCncp6hHvOL18Tg97fusRsI0fGq9g5Bkyo5wDvRmjTxLxDDwYhykkqZAlyMjzeQQtz9AQPKKhs8OcclGxE1dtNy0qODKKTISO4YgYJX8TRSfWSA4UIkLafoZAI15mdTJza0F274rRudKbcbDvbwgMa0"
         }
     };
     const req = https.request(options, (res) => {
