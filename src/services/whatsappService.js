@@ -2,15 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const https = require("https");
 class WhatsappService {
-    SendMessageWhatsApp(textResponse, number) {
-        const data = JSON.stringify({
-            messaging_product: "whatsapp",
-            to: number,
-            text: {
-                body: textResponse,
-            },
-            type: "text",
-        });
+    SendMessageWhatsApp(data) {
         const options = {
             host: "graph.facebook.com",
             path: "/v16.0/110788808671059/messages",

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const WhatsappDAO_1 = __importDefault(require("../dao/WhatsappDAO"));
 const WhatsappService_1 = __importDefault(require("../services/WhatsappService"));
+const SampleModel_1 = __importDefault(require("../shared/SampleModel"));
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
 function GetTextUser(messages) {
@@ -63,7 +64,41 @@ class WhatsappController extends WhatsappDAO_1.default {
                     myConsole.log(text);
                     console.log(text);
                     console.log(number);
-                    WhatsappService_1.default.SendMessageWhatsApp(text, number);
+                    if (text == "text") {
+                        var data = SampleModel_1.default.SampleText("Hola inge", number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "image") {
+                        var data = SampleModel_1.default.SampleImage(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "video") {
+                        var data = SampleModel_1.default.SampleVideo(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "audio") {
+                        var data = SampleModel_1.default.SampleAudio(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "document") {
+                        var data = SampleModel_1.default.SampleDocument(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "button") {
+                        var data = SampleModel_1.default.SampleButtons(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "list") {
+                        var data = SampleModel_1.default.SampleList(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else if (text == "location") {
+                        var data = SampleModel_1.default.SampleLocation(number);
+                        WhatsappService_1.default.SendMessageWhatsApp(data);
+                    }
+                    else {
+                        var data = SampleModel_1.default.SampleText("Escriba bien mula", number);
+                    }
                 }
                 res.send("EVENT_RECEIVED");
             }
