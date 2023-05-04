@@ -95,20 +95,24 @@ class SampleModel {
             type: "interactive",
             interactive: {
                 type: "list",
-                body: {
+                header: {
+                    type: "text",
                     text: "Tengo estas opciones",
+                },
+                body: {
+                    text: "Son:",
                 },
                 footer: {
                     text: "Selecciona una de las opciones para poder atenderte",
                 },
                 action: {
-                    buttons: "Ver opciones",
+                    button: "Ver opciones",
                     sections: [
                         {
                             title: "Compra y vende productos",
                             rows: [
                                 {
-                                    id: "main-comprar",
+                                    id: "main-comprar-header",
                                     title: "Comprar",
                                     description: "Compra los mejores productos para tu hogar",
                                 },
