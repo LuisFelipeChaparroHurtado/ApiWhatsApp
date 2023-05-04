@@ -63,7 +63,7 @@ class WhatsappController extends WhatsappDAO_1.default {
                     myConsole.log(text);
                     console.log(text);
                     console.log(number);
-                    //whatsappService.SendMessageWhatsApp("El usuario dijo" + text, number);
+                    whatsappService.SendMessageWhatsApp("El usuario dijo" + text, number);
                 }
                 res.send("EVENT_RECEIVED");
             }
