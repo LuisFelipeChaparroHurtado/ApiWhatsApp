@@ -7,11 +7,13 @@ const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 const express_1 = __importDefault(require("express"));
 const routes_1 = __importDefault(require("../../routes/routes"));
+const dotenv_1 = __importDefault(require("dotenv"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
         this.startSetting();
         this.activeRoute();
+        dotenv_1.default.config({ path: "variables.env" });
     }
     startSetting() {
         this.app.set("PORT", 3123);
