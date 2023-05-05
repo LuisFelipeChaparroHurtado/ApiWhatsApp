@@ -13,7 +13,7 @@ const openai_1 = require("openai");
 class ChatGPTService {
     GetMessageChaGPT(text) {
         return __awaiter(this, void 0, void 0, function* () {
-            const configuration = new openai_1.Configuration({ apiKey: "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" });
+            const configuration = new openai_1.Configuration({ apiKey: String(process.env.PASS_OPENAPI) });
             const openai = new openai_1.OpenAIApi(configuration);
             const response = yield openai.createCompletion({
                 model: "text-davinci-003",
