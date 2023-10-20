@@ -48,12 +48,12 @@ class ProcessMessage {
             var model = SampleModel_1.default.SampleText("Seguir la siguiente cuenta: linkedin.com/in/juan-pablo-robles-arias-00316626b", number);
             models.push(model);
         }
-        else if (textUser.includes("Agendar")) {
+        else if (textUser.includes("agencia")) {
             //AGENCIA
             var model = SampleModel_1.default.SampleText("Registatre en el siguiente formulario para poder agendarte 💪: https://docs.google.com/forms/d/e/1FAIpQLSeV2-BAld86gZy0aq_ZMRXU9FJnZBBw5yyWxVB4KlfXJmXadA/viewform", number);
             models.push(model);
         }
-        else if (textUser.includes("Centro de contacto")) {
+        else if (textUser.includes("contacto")) {
             //CENTRO DE CONTACTO
             var model = SampleModel_1.default.SampleLocation(number);
             models.push(model);
