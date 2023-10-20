@@ -150,10 +150,10 @@ class SampleModel {
             to: number,
             type: "location",
             location: {
-                latitude: "4.616795816925093",
-                longitude: "-74.05494961888665",
-                name: "Monserrate",
-                address: "Bogotá",
+                latitude: "5.713326534329634",
+                longitude: "-72.94551926581909",
+                name: "Sogamoso",
+                address: "Boyacá",
             },
         });
         return data;
