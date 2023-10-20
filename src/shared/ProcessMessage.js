@@ -1,82 +1,74 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const WhatsAppModels_1 = __importDefault(require("./WhatsAppModels"));
 const WhatsappService_1 = __importDefault(require("../services/WhatsappService"));
-const ChatGPTService_1 = __importDefault(require("../services/ChatGPTService"));
+const SampleModel_1 = __importDefault(require("./SampleModel"));
 class ProcessMessage {
     Process(textUser, number) {
-        return __awaiter(this, void 0, void 0, function* () {
-            textUser = textUser.toLowerCase();
-            var models = [];
-            /*if (textUser.includes("hola")) {
-                    //Saludo
-                    var model = whatsappModels.MessageText("Hola, un gusto saludarte", number);
-                    models.push(model);
-                    var modelList = whatsappModels.MessageList(number);
-                    models.push(modelList);
-                }
-                else if(textUser.includes("gracias")){
-                    //Agradecimiento
-                    var model = whatsappModels.MessageText("Gracias a ti por escribirme", number);
-                    models.push(model);
-                    
-                }
-                else if(textUser.includes("adios") || textUser.includes("bye") || textUser.includes("me voy") || textUser.includes("adiós")){
-                    //Despedida
-                    var model = whatsappModels.MessageText("Cuidate", number);
-                    models.push(model);
-                }else if(textUser.includes("comprar")){
-                    //Comprar
-                    var model = whatsappModels.MessageButtons(number);
-                    models.push(model);
-                    
-                }else if(textUser.includes("vender")){
-                    //Vender
-                    var model = whatsappModels.MessageText("Registrate en el siguiente formato: https://guiaelectoraldecolombia.com ", number);
-                    models.push(model);
-                    
-                }
-                else if(textUser.includes("agencia")){
-                    //Agencia
-                    var model = whatsappModels.MessageLocation(number);
-                    models.push(model);
-                    
-                }
-                else if(textUser.includes("contacto")){
-                    //Agencia
-                    var model = whatsappModels.MessageText("*Centro de contacto:*\n3143385561",number);
-                    models.push(model);
-                    
-                }
-                else {
-                    var model = whatsappModels.MessageText("No entiendo", number);
-                    models.push(model);
-                }
-                */
-            const resultChatGPT = yield ChatGPTService_1.default.GetMessageChaGPT(textUser);
-            if (resultChatGPT != null) {
-                var model = WhatsAppModels_1.default.MessageText(resultChatGPT, number);
-                models.push(model);
-            }
-            else {
-                var model = WhatsAppModels_1.default.MessageText("Lo siento algo salió mal, inténtalo más tarde.", number);
-                models.push(model);
-            }
-            models.forEach((model) => {
-                WhatsappService_1.default.SendMessageWhatsApp(model);
-            });
+        textUser = textUser.toLowerCase();
+        var models = [];
+        //hola que tal
+        if (textUser.includes("hola") ||
+            textUser.includes("buenos") ||
+            textUser.includes("buenas")) {
+            //SALUDAR
+            var model = SampleModel_1.default.SampleText("Hola, un gusto saludarte", number);
+            models.push(model);
+            var modelList = SampleModel_1.default.SampleList(number);
+            models.push(modelList);
+        }
+        else if (textUser.includes("gracias")) {
+            //AGRADECIMIENTO
+            var model = SampleModel_1.default.SampleText("Con gusto, gracias por comunicarte con nosotros", number);
+            models.push(model);
+        }
+        else if (textUser.includes("adios") ||
+            textUser.includes("adiós") ||
+            textUser.includes("bye") ||
+            textUser.includes("chao")) {
+            //DESPEDIDA
+            var model = SampleModel_1.default.SampleText("Ve con DIOS", number);
+            models.push(model);
+        }
+        else if (textUser.includes("comprar")) {
+            //COMPRAR
+            var modelButton = SampleModel_1.default.SampleButtons(number);
+            models.push(modelButton);
+        }
+        else if (textUser.includes("vender")) {
+            //VENDER
+            var model = SampleModel_1.default.SampleText("Seguir la siguiente cuenta: linkedin.com/in/juan-pablo-robles-arias-00316626b", number);
+            models.push(model);
+        }
+        else if (textUser.includes("agendar")) {
+            //AGENCIA
+            var model = SampleModel_1.default.SampleText("Registatre en el siguiente formulario para poder agendarte 💪: https://docs.google.com/forms/d/e/1FAIpQLSeV2-BAld86gZy0aq_ZMRXU9FJnZBBw5yyWxVB4KlfXJmXadA/viewform", number);
+            models.push(model);
+        }
+        else if (textUser.includes("centro de contacto")) {
+            //CENTRO DE CONTACTO
+            var model = SampleModel_1.default.SampleLocation(number);
+            models.push(model);
+        }
+        else if (textUser.includes("chat")) {
+            //CHAT GPT
+            var model = SampleModel_1.default.SampleLocation(number);
+            models.push(model);
+        }
+        else if (textUser.includes("contact")) {
+            //CHAT GPT
+            var model = SampleModel_1.default.SampleLocation(number);
+            models.push(model);
+        }
+        else {
+            //NO TE ENTIENDO
+            var model = SampleModel_1.default.SampleText("No entiendo lo que dices...", number);
+            models.push(model);
+        }
+        models.forEach((data) => {
+            WhatsappService_1.default.SendMessageWhatsApp(data);
         });
     }
 }

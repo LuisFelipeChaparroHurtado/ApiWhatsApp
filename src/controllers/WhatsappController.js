@@ -12,7 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const WhatsappDAO_1 = __importDefault(require("../dao/WhatsappDAO"));
 const ProcessMessage_1 = __importDefault(require("../shared/ProcessMessage"));
 const fs = require("fs");
 const myConsole = new console.Console(fs.createWriteStream("./logs.txt"));
@@ -40,9 +39,8 @@ function GetTextUser(messages) {
     }
     return text;
 }
-class WhatsappController extends WhatsappDAO_1.default {
+class WhatsappController {
     constructor() {
-        super(...arguments);
         this.getVerifyToken = (req, res) => {
             try {
                 var accessToken = "RYTAFAADHJJADADH25634232GGSDSA12345";

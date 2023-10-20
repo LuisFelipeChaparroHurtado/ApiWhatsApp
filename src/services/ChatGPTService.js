@@ -15,11 +15,13 @@ class ChatGPTService {
         return __awaiter(this, void 0, void 0, function* () {
             const configuration = new openai_1.Configuration({ apiKey: String(process.env.PASS_OPENAPI) });
             const openai = new openai_1.OpenAIApi(configuration);
+            console.log(openai);
             const response = yield openai.createCompletion({
                 model: "text-davinci-003",
                 prompt: text,
                 max_tokens: 100
             });
+            console.log("3");
             if (response.status == 200 && response.data.choices.length > 0) {
                 return response.data.choices[0].text;
                 return null;
